@@ -1,6 +1,15 @@
 # sync-test
 
-This template should help get you started developing a vanilla web extension in Vite.
+This extension is to implement middleware to facilitate testing of
+the sync extension from Panic (the Gun testing framework).
+
+It works by implementing the browser.bookmarks API, and making it
+available to Panic so that bookmarks can be created/etc as would
+a user, and event listeners called as bookmarks are changed.
+
+It would be installed in two browser instances, which would have
+their bookmarks synced by the sync extension via Gun - that is what
+is being tested.
 
 ## Usage Notes
 
