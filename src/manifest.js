@@ -2,7 +2,7 @@ import pkg from "../package.json";
 
 const manifest = {
   background: {
-    scripts: ["src/entries/background/main.js"],
+    scripts: ["src/entries/background/background-script.js"],
     persistent: false,
   },
   content_scripts: [
@@ -37,7 +37,10 @@ const manifest = {
     open_in_tab: true,
     page: "src/entries/options/index.html",
   },
-  permissions: ["*://*/*"],
+  permissions: [
+    "*://*/*",
+    "bookmarks",
+  ],
 };
 
 export function getManifest() {

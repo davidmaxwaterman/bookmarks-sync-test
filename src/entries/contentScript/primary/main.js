@@ -11,3 +11,7 @@ renderContent(import.meta.PLUGIN_WEB_EXT_CHUNK_CSS_PATHS, (appRoot) => {
     </div>
   `;
 });
+
+console.log("MAXMAXMAX:",
+  await globalThis.browser.runtime.sendMessage({method:"getTree"})
+);

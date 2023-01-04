@@ -6,6 +6,10 @@ import { getManifest } from "./src/manifest";
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
+    build: {
+      target: "esnext",
+      sourcemap: "inline",
+    },
     plugins: [
       webExtension({
         manifest: getManifest(),
