@@ -27,7 +27,12 @@ const onBookmarksEventHandler = (eventName, args) => {
     .query({})
     .then(
       (tabList) => tabList.forEach(
-        (tab) => tabs.sendMessage(tab.id, {eventName, args})
+        (tab) => {
+          const isRealTab = tab.url; // about tabs have no url
+          if (isRealTab) {
+            tabs.sendMessage(tab.id, {eventName, args});
+          }
+        }
       )
     )
     .catch((error) =>
