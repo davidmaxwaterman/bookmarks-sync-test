@@ -8,7 +8,7 @@
     "build": "vite build",
     "watch": "vite build --watch",
     "dev": "vite",
-    "serve:waterfox": "web-ext run --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
+    "serve:waterfox": "web-ext run --devtools --no-reload --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
     "lint": "eslint src --ext .js"
   },
   "license": "MIT",
