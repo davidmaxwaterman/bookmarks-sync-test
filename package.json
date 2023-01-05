@@ -1,16 +1,15 @@
 {
-  "name": "vite-web-extension",
+  "name": "sync-test-extension",
   "version": "1.0.0",
-  "displayName": "Vite Web Extension",
-  "author": "@samrum/vite-plugin-web-extension",
-  "description": "A @samrum/vite-plugin-web-extension web extension",
+  "displayName": "Sync Test Extension",
+  "author": "David Waterman",
+  "description": "An Extension to provide middleware for testing bookmarks.",
   "scripts": {
     "build": "vite build",
     "watch": "vite build --watch",
     "dev": "vite",
-    "serve:waterfox": "web-ext run --devtools --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
-    "serve:firefox": "web-ext run --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
-    "serve:chrome": "web-ext run -t chromium --start-url \"https://google.com\" --source-dir ./dist/"
+    "serve:waterfox": "web-ext run --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
+    "lint": "eslint src --ext .js"
   },
   "license": "MIT",
   "devDependencies": {
