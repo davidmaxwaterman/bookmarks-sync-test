@@ -12,6 +12,15 @@ renderContent(import.meta.PLUGIN_WEB_EXT_CHUNK_CSS_PATHS, (appRoot) => {
   `;
 });
 
+const {runtime} = globalThis.browser;
+
+// handle messages from content script
+const onMessageHandler = (args) => {
+  console.log("MAXMAXMAX:content-script:", args);
+};
+
+runtime.onMessage.addListener(onMessageHandler);
+
 console.log("MAXMAXMAX:",
-  await globalThis.browser.runtime.sendMessage({method:"getTree"})
+  await runtime.sendMessage({method:"getTree"})
 );
