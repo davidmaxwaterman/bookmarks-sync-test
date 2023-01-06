@@ -1,17 +1,3 @@
-import renderContent from "../renderContent";
-import logo from "~/assets/logo.svg";
-import "./style.css";
-
-renderContent(import.meta.PLUGIN_WEB_EXT_CHUNK_CSS_PATHS, (appRoot) => {
-  const logoImageUrl = new URL(logo, import.meta.url).href;
-
-  appRoot.innerHTML = `
-    <div class="logo">
-      <img src="${logoImageUrl}" height="50" alt="" />
-    </div>
-  `;
-});
-
 const {runtime} = globalThis.browser;
 
 // handle messages from content script
@@ -21,6 +7,17 @@ const onMessageHandler = (args) => {
 
 runtime.onMessage.addListener(onMessageHandler);
 
-console.log("MAXMAXMAX:",
-  await runtime.sendMessage({method:"getTree"})
-);
+window.addEventListener("message", async (event) => {
+  const {source, data} = event;
+  const fromPanic = source === window && data?.from === "panic";
+  if (fromPanic) {
+    const {method} = data;
+    console.log("MAXMAXMAX:method:", method);
+    const tree = await runtime.sendMessage({method:"getTree"});
+    window.postMessage({
+      from: "contentScript",
+      method,
+      tree
+    });
+  }
+});
