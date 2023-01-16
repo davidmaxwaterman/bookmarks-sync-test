@@ -6,9 +6,10 @@
   "description": "An Extension to provide middleware for testing bookmarks.",
   "scripts": {
     "build": "vite build",
-    "watch": "vite build --watch",
-    "dev": "vite",
+    "watch": "vite build --mode development --minify false --sourcemap true --watch",
+    "dev": "vite build --mode development --minify false --sourcemap true",
     "serve:waterfox": "web-ext run --devtools --no-reload --start-url \"about:debugging#/runtime/this-firefox\"  --source-dir ./dist/",
+    "test:e2e": "bash scripts/test-e2e.sh",
     "lint": "eslint src --ext .js"
   },
   "license": "MIT",
